@@ -6,7 +6,6 @@ import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 
 function Expenses(props) {
-  const expenses = props.expenses;
   const [filterYear, setFilterYear] = useState("2020");
 
   const filterChangeEventHandler = (event) => {
@@ -14,6 +13,7 @@ function Expenses(props) {
     console.log(event.target.value);
   };
 
+  console.log(props.expenses);
   return (
     <Card className="expenses">
       <ExpensesFilter
@@ -21,7 +21,7 @@ function Expenses(props) {
         onFilterChange={filterChangeEventHandler}
       />
 
-      {expenses.map((expense) => (
+      {props.expenses.map((expense) => (
         <ExpenseItem
           title={expense.title}
           amount={expense.amount}
