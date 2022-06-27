@@ -5,38 +5,16 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
-  //   const [userInput, setUserInput] = useState({
-  //     enteredTitle: "",
-  //     enteredAmount: "",
-  //     enteredDate: "",
-  //   });
+  const [showForm, setShowForm] = useState(false);
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
-    // setUserInput((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     enteredTitle: event.target.value,
-    //   };
-    // });
   };
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
-    // setUserInput((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     enteredAmount: event.target.value,
-    //   };
-    // });
   };
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
-    // setUserInput((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     enteredDate: event.target.value,
-    //   };
-    // });
   };
 
   const submitHandler = (event) => {
@@ -55,7 +33,17 @@ const ExpenseForm = (props) => {
     setEnteredDate("");
   };
 
-  return (
+  const toggleNewExpenseForm = () => {
+    setShowForm(!showForm);
+  };
+
+  const showButton = (
+    <div className="new-expense__actions">
+      <button onClick={toggleNewExpenseForm}>Add New Expense</button>
+    </div>
+  );
+
+  const form = (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
@@ -88,9 +76,17 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={toggleNewExpenseForm}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
+  );
+
+  return (
+    <div>
+      {!showForm && showButton}
+      {showForm && form}
+    </div>
   );
 };
 
