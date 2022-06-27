@@ -8,7 +8,8 @@ const ExpensesList = (props) => {
     (expense) => expense.date.getFullYear() == props.filterYear
   );
 
-  if (props.items.length == 0) return <div>No results found.</div>;
+  if (filteredExpenses.length == 0)
+    return <h2 className="expenses-filter">No results found.</h2>;
 
   return filteredExpenses.map((expense) => (
     <ExpenseItem

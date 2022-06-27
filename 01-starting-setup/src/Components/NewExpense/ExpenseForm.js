@@ -31,6 +31,7 @@ const ExpenseForm = (props) => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+    toggleNewExpenseForm();
   };
 
   const toggleNewExpenseForm = () => {
